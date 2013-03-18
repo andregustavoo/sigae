@@ -11,6 +11,7 @@
  * @author andre
  */
 class Atividade {
+    private $id;
     private $atividade;
     private $data;
     private $hora;
@@ -18,7 +19,15 @@ class Atividade {
     private $descricao;
     private $grupoAtividade;
     private $usuario;
-    public function getAtividade() {
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+        public function getAtividade() {
         return $this->atividade;
     }
 

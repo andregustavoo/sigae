@@ -11,7 +11,16 @@
  * @author andre
  */
 class GrupoAtividade {
-    private $descricao;
+    private $id;
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+        private $descricao;
     public function getDescricao() {
         return $this->descricao;
     }

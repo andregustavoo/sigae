@@ -11,13 +11,22 @@
  * @author andre
  */
 class Individuo {
+    private $id;
     private $nome;
     private $dataNascimento;
     private $telefone;
     private $email;
     private $cpf;
     private $classe;
-    public function getNome() {
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+        public function getNome() {
         return $this->nome;
     }
 
