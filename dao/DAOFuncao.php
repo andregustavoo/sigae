@@ -14,7 +14,8 @@ class DAOFuncao {
   public function excluir($idfuncao){
       $sql="delete from funcao where id=$idfuncao";
       $conexao=  DAO::getConexao();
-      
+      $resultado=$conexao->exec($sql);
+      return $resultado;
   }
 }
 
