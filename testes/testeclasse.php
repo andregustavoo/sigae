@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title></title>
     </head>
     <?php
@@ -24,21 +24,21 @@
     <body>
         <?php
             $daoClasse=new DAOClasse();
-            $classe=$daoClasse->localizarPorId(3);
-            if ($classe){
+           
+        
                 $classe=new Classe();
                 $classe->setDescricao('blá,blá blá!');
                 //Precisamos recuperar o id da classe;
                
-                $daoClasse=new DAOClasse();
+                
                 if ($daoClasse->gravar($classe)){
-                    echo 'Cadastro Gerado com sucesso';
+                    echo 'Cadastro Salvo com sucesso';
                 }else{
                     echo 'Erro Salvando classe';
                 }
-            }else{
-                echo 'Erro salvando classe';
-            }
+                 $classe=$daoClasse->localizarPorId(3);
+                 echo $classe->getDescricao();
+           
         ?>
     </body>
 </html>
