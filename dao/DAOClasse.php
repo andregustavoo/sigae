@@ -27,7 +27,7 @@ class DAOClasse {
                   where idclasse=".$classe->getId();  }
 
       
-  
+    //
    $conexao=DAO::getConexao();
     $resultado=$conexao->exec($sql);
       return $resultado;
