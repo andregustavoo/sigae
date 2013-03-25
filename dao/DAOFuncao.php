@@ -1,6 +1,5 @@
 <?php
-require 'DAO.php';
-require  $_SERVER['DOCUMENT_ROOT'] .'/sigae/model/Funcao.php';
+
 class DAOFuncao {
   public function gravar(Funcao $funcao){
       $sql='';
@@ -11,7 +10,7 @@ class DAOFuncao {
               '".$funcao->getSetor()."')";
       }else{
           $sql="update funcao set 
-              descricao='".$funcao->getDescricao()."',
+              descricaofuncao='".$funcao->getDescricao()."',
               setor='".$funcao->getSetor()."'
                   where idfuncao=".$funcao->getId(); 
       }
@@ -27,7 +26,7 @@ class DAOFuncao {
       return $resultado;
   }
   public function localizarPorId($idfuncao){
-      $sql="select idfuncao,descricao,setor 
+      $sql="select idfuncao,descricaofuncao,setor 
           from funcao where idfuncao=$idfuncao";
       $conexao=DAO::getConexao();
       $tabela=$conexao->query($sql);
@@ -35,7 +34,7 @@ class DAOFuncao {
       if ($registro){
           $funcao=new Funcao();
           $funcao->setId($registro['idfuncao']);
-          $funcao->setDescricao($registro['descricao']);
+          $funcao->setDescricao($registro['descricaofuncao']);
           $funcao->setSetor($registro['setor']);
           return $funcao;
       }else{

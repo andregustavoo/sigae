@@ -10,8 +10,7 @@
  *
  * @author 20111144110165
  */
-require 'DAO.php';
-require  $_SERVER['DOCUMENT_ROOT'] .'/sigae/model/GrupoAtividade.php';
+
 class DAOGrupoAtividade {
     public function gravar(GrupoAtividade $grupoatividade){
         $sql='';

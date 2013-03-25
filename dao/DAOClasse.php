@@ -10,15 +10,15 @@
  *
  * @author 20102144110298
  */
-require 'DAO.php';
-require  $_SERVER['DOCUMENT_ROOT'] .'/sigae/model/Classe.php';
+
 class DAOClasse {
      public function gravar(Classe $classe){
       $sql='';
-      if (isset($classe->getId()) || $classe->getId()==0){
+      $id=$classe->getId();
+      if (isset($id) || ($classe->getId()==0)){
           $sql="insert into classe(descricaoclasse)
                 values(
-              '".$classe->getDescricao()."'";
+              '".$classe->getDescricao()."')";
               
       }else{
           $sql="update classe set 
@@ -28,8 +28,8 @@ class DAOClasse {
 
       
     //
-   $conexao=DAO::getConexao();
-    $resultado=$conexao->exec($sql);
+    $conexao=DAO::getConexao();
+        $resultado=$conexao->exec($sql);
       return $resultado;
      }
       
