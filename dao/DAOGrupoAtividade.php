@@ -14,9 +14,10 @@
 class DAOGrupoAtividade {
     public function gravar(GrupoAtividade $grupoatividade){
         $sql='';
-        if (isset($grupoatividade->getId()) || $grupoatividade->getId()==0){
+        $id=$grupoatividade->getId();
+        if (isset($id) || $grupoatividade->getId()==0){
             $sql = "insert into grupoatividade(descricaogrupoatividade)
-                values{'".$grupoatividade->getDescricao()."'}";
+                values('".$grupoatividade->getDescricao()."')";
         }
         else{
             $sql="update grupoatividade set 

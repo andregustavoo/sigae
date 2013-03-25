@@ -33,7 +33,6 @@ class DAOIndividuo {
             where idindividuo=". $individuo->getId();
        }
        $conexao=DAO::getConexao();
-       echo $sql;
        $resultado=$conexao->exec($sql);
        return $resultado;
    }
