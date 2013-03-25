@@ -40,7 +40,7 @@ and open the template in the editor.
                 $individuo->setTelefone('9870-0987');
                 $daoIndividuo=new DAOIndividuo();
                 if ($daoIndividuo->gravar($individuo)){
-                    echo 'Cadastro Gerado com sucesso';
+                    echo 'Cadastro Gravado com sucesso';
                 }else{
                     echo 'Erro Salvando individuo';
                 }
