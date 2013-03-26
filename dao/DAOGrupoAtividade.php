@@ -15,7 +15,7 @@ class DAOGrupoAtividade {
     public function gravar(GrupoAtividade $grupoatividade){
         $sql='';
         $id=$grupoatividade->getId();
-        if (isset($id) || $grupoatividade->getId()==0){
+        if (!isset($id) || $grupoatividade->getId()==0){
             $sql = "insert into grupoatividade(descricaogrupoatividade)
                 values('".$grupoatividade->getDescricao()."')";
         }
@@ -25,9 +25,13 @@ class DAOGrupoAtividade {
                     where idgrupoatividade".$grupoatividade->getId();
         }
         
-        $conexao = DAO::getConexao();
-        $resultado = $conexao->exec($sql);
-        return $resultado;
+        try{
+            $conexao=DAO::getConexao();
+            $resultado=$conexao->exec($sql);
+            return true;
+        }catch(PDOException $error){
+            return false;
+        }
     }
     
     public function excluir($idgrupoatividade){

@@ -3,7 +3,7 @@
 class DAOFuncao {
   public function gravar(Funcao $funcao){
       $sql='';
-      if (isset($funcao->getId()) || $funcao->getId()==0){
+      if (!isset($funcao->getId()) || $funcao->getId()==0){
           $sql="insert into funcao(descricaofuncao,setor)
                 values(
               '".$funcao->getDescricao()."',
@@ -15,9 +15,13 @@ class DAOFuncao {
                   where idfuncao=".$funcao->getId(); 
       }
       
-      $conexao=DAO::getConexao();
-      $resultado=$conexao->exec($sql);
-      return $resultado;
+      try{
+            $conexao=DAO::getConexao();
+            $resultado=$conexao->exec($sql);
+            return true;
+       }catch(PDOException $error){
+           return false;
+       }
   }
   public function excluir($idfuncao){
       $sql="delete from funcao where idfuncao=$idfuncao";

@@ -32,9 +32,14 @@ class DAOIndividuo {
             idclasse=" . $individuo->getClasse()->getId()."
             where idindividuo=". $individuo->getId();
        }
-       $conexao=DAO::getConexao();
-       $resultado=$conexao->exec($sql);
-       return $resultado;
+       try{
+            $conexao=DAO::getConexao();
+            $resultado=$conexao->exec($sql);
+            return true;
+       }catch(PDOException $error){
+           return false;
+       }
+      
    }
    public function excluir($idindividuo){
        $sql="delete from individuo where idindividuo=$idindividuo";

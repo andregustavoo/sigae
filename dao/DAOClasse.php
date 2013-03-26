@@ -15,7 +15,7 @@ class DAOClasse {
      public function gravar(Classe $classe){
       $sql='';
       $id=$classe->getId();
-      if (isset($id) || ($classe->getId()==0)){
+      if (!isset($id) || ($classe->getId()==0)){
           $sql="insert into classe(descricaoclasse)
                 values(
               '".$classe->getDescricao()."')";
@@ -27,10 +27,13 @@ class DAOClasse {
                   where idclasse=".$classe->getId();  }
 
       
-    //
-    $conexao=DAO::getConexao();
-        $resultado=$conexao->exec($sql);
-      return $resultado;
+        try{
+            $conexao=DAO::getConexao();
+            $resultado=$conexao->exec($sql);
+            return true;
+       }catch(PDOException $error){
+           return false;
+       }
      }
       
   public function excluir($idclasse){
