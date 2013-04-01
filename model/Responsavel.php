@@ -11,9 +11,18 @@
  * @author andre
  */
 class Responsavel {
+    private $id;
     private $responsavelPor;
     private $aluno;
-    public function getResponsavelPor() {
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+        public function getResponsavelPor() {
         return $this->responsavelPor;
     }
 
@@ -25,7 +34,7 @@ class Responsavel {
         return $this->aluno;
     }
 
-    public function setAluno(Individuo $aluno) {
+    public function setAluno(Aluno $aluno) {
         $this->aluno = $aluno;
     }
 
