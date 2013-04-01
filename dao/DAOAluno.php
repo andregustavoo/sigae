@@ -45,7 +45,7 @@ class DAOAluno {
                       $sql02="insert into aluno(matricula,turma,idindividuo) values(
                       '". $aluno->getMatricula() . "',
                       '". $aluno->getTurma() . "',
-                      ".$idinviduo.")";
+                      ".$idindividuo.")";
              
                       $resultado=$conexao->exec($sql02);
            
