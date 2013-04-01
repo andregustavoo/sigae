@@ -22,7 +22,7 @@ class DAOGrupoAtividade {
         else{
             $sql="update grupoatividade set 
                 descricaogrupoatividade='".$grupoatividade->getDescricao()."'
-                    where idgrupoatividade".$grupoatividade->getId();
+                    where idgrupoatividade=".$grupoatividade->getId();
         }
         
         try{
@@ -56,6 +56,14 @@ class DAOGrupoAtividade {
         else{
             return null;
         }
+    }
+    
+    public function listarGrupoAtividades(){
+      $sql="select idgrupoatividade,descricaogrupoatividade from grupoatividade order by descricaogrupoatividade";
+      $conexao=DAO::getConexao();
+      $tabela=$conexao->query($sql);
+      $registros=$tabela->fetchAll();
+      return $registros;
     }
 
 }

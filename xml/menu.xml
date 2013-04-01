@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <item id="cadastros-basicos" text="Cadastros Básicos">
+        <item id="classe" text="Classe"/>
+        <item id="grupoatividade" text="Grupos de Atividade"/>
+        <item id="funcao" text="Função"/>
+    </item>
+    <item id="cadastros-pessoal" text="Registro de Pessoas">
+        <item id="cadastroindividuo" text="Cadastrar Pessoa"/>
+        <item id="cadastroaluno" text="Cadastrar Aluno"/>
+    </item>
+    <item id="atendimentos" text="Atendimentos">
+        <item id="novoatendimento" text="Novo"/>
+        <item id="consultaratendimento" text="Consultar"/>
+    </item>
+    <item id="atividades" text="Atividades">
+        <item id="novaatividade" text="Nova"/>
+        <item id="consultaratividade" text="Consultar"/>
+        <item id="relatorioatividade" text="Relatório"/>
+    </item>
+</menu>

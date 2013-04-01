@@ -22,9 +22,10 @@ class DAOClasse {
               
       }else{
           $sql="update classe set 
-              descricaoclasse='".$classe->getDescricao()."',
-              
-                  where idclasse=".$classe->getId();  }
+              descricaoclasse='".$classe->getDescricao()."'
+                  where idclasse=".$classe->getId();
+          
+      }
 
       
         try{
@@ -57,8 +58,14 @@ class DAOClasse {
       }else{
           return null;
       }
-              
-      
+  }
+  
+  public function listarClasses(){
+      $sql="select idclasse,descricaoclasse from classe order by descricaoclasse";
+      $conexao=DAO::getConexao();
+      $tabela=$conexao->query($sql);
+      $registros=$tabela->fetchAll();
+      return $registros;
   }
 
 }

@@ -1,0 +1,19 @@
+/* 
+    Document   : estilo
+    Created on : 27/03/2013, 12:58:27
+    Author     : andregustavo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+ html, body {
+        	width: 100%;
+		height: 100%;
+		overflow: hidden;
+		margin: 0px;
+		background-color: #EBEBEB;
+     }
+     
+root { 
+    display: block;
+}
+

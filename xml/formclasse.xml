@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<items>
+   <item type="fieldset" name="data" label="Classe" inputWidth="auto">
+       <item type="hiddeng"name="id"/>
+       <item type="input" name="descricao" label="Descrição" position="label-top"/>
+       <item type="button" name="save" value="Salvar"/>
+   </item>
+</items>
