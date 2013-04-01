@@ -41,7 +41,7 @@ class DAOAluno {
         
                   $res=$conexao->exec($sql01);
                   if ($res){
-                      $idinviduo=$conexao->lastInsertId();
+                      $idindividuo=$conexao->lastInsertId();
                       $sql02="insert into aluno(matricula,turma,idindividuo) values(
                       '". $aluno->getMatricula() . "',
                       '". $aluno->getTurma() . "',
