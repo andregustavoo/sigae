@@ -18,12 +18,12 @@ class DAOUsuario {
         $conexao=DAO::getConexao();
         if (!isset($idusuario) || $usuario->getId()==0){
             $sql01="insert into individuo(nome,telefone,datanascimento,email,cpf,idclasse) values(
-            '" . $usuario->getNome() . "',
-            '".$usuario->getTelefone() . "',
-            '". $usuario->getDataNascimento() . "',
-            '". $usuario->getEmail() . "',
-            '".$usuario->getCpf() . "',
-             " . $usuario->getClasse()->getId().")";
+            '".$usuario->getNome()."',
+            '".$usuario->getTelefone()."',
+            '".$usuario->getDataNascimento()."',
+            '".$usuario->getEmail()."',
+            '".$usuario->getCpf()."',
+             ".$usuario->getClasse()->getId().")";
             try{
                   $conexao->beginTransaction();
         
@@ -32,11 +32,11 @@ class DAOUsuario {
                       $idindividuo=$conexao->lastInsertId();
                       $idfuncao=$conexao->lastInsertId();
                       $sql02="insert into usuario(login,senha,administrador,idindividuo,idfuncao) values(
-                      '". $usuario->getLogin() . "',
-                      '". $usuario->getSenha() . "',
-                      '". $usuario->getAdministrador() . "',
-                      ".$idindividuo->getIndividuo()->getId().",
-                      ".$idfuncao->getFuncao()->getId().")";
+                      '".$usuario->getLogin()."',
+                      '".$usuario->getSenha()."',
+                      '".$usuario->getAdministrador()."',
+                      ".$idindividuo.",
+                      ".$idfuncao.")";
              
                       $resultado=$conexao->exec($sql02);
            
