@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<toolbar>
+    <item type="text" name="login" text="Bem vindo, Fulano"/>
+    <item type="button" name="sair" title="Sair" img="exit.gif"/>
+</toolbar>

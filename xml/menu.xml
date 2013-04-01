@@ -18,4 +18,8 @@
         <item id="consultaratividade" text="Consultar"/>
         <item id="relatorioatividade" text="Relatório"/>
     </item>
+    <item id="usuario" text="Usuário">
+        <item id="novousuario" text="Cadastrar"/>
+        <item id="mudarsenha" text="Mudar Senha"/>
+    </item>
 </menu>

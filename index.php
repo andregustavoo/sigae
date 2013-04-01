@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
         <script type="text/javascript">
             //TODO Modularizar melhor
-            var layout, grid, menu, toolbar;
+            var layout, grid, menu, toolbar,maintoolbar;
             var gl_view_type = "dlist";
             var gl_view_bg = "";
             var form,janela;
@@ -34,6 +34,9 @@
                         
                     } 
                  });   
+                 maintoolbar=layout.attachToolbar();
+                 maintoolbar.setIconPath("imgs/");
+                 maintoolbar.loadXML("xml/toolbarprincipal.xml");
             }
            
         </script>
