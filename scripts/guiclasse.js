@@ -29,7 +29,7 @@
 function montarGUIClasse(layout){
 grid=montarGrid(layout,"controller/controllerclasse.php?consultar=1",
 
- "ID,Descrição","10,90","ro,ro");
+ "ID,Descrição da Classe","10,90","ro,ro");
              var xmlToolbar='<toolbar><item id="novaclasse" type="button" text="Novo" img="new.gif" imgdis="new_dis.gif"/>\n\
  <item id="excluirclasse" type="button" text="Excluir" img="delete.gif" imgdis="delete_dis.gif"/> \n\
 <item id="editarclasse" type="button" text="Editar" img="edit.gif" imgdis="edit_dis.gif"/></toolbar>';

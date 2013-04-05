@@ -28,6 +28,7 @@
                  menu.attachEvent("onClick",function(id){
                     if (id=="classe"){
                         montarGUIClasse(layout);
+                        layout.cells("a").setText("SIGAE - Classe");
                     }else if(id=="grupoatividade"){
                         montarGUIGrupoAtividade(layout);
                     }else if(id=="funcao"){
