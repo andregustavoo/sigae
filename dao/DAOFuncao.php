@@ -43,10 +43,15 @@ class DAOFuncao {
           return $funcao;
       }else{
           return null;
-      }
-              
-      
+      } 
   }
+public function listarFuncoes(){
+    $sql="select idfuncao,descricaofuncao,setor from funcao order by descricaofuncao";
+    $conexao=DAO::getConexao();
+    $tabela=$conexao->query($sql);
+    $registros=$tabela->fetchAll();
+    return $registros;
+}
 }
 
 ?>

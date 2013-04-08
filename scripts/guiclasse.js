@@ -21,6 +21,8 @@
                 grid.clearAll();
                 grid.load("controller/controllerclasse.php?consultar=1");
 
+            }else{
+                alert("Erro salvando classe");
             }
         });
     }

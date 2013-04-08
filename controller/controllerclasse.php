@@ -18,8 +18,8 @@ require '../utils/gerarXML.php';
         if (isset($_GET['idclasse'])){
             $idclasse=$_GET['idclasse'];
             $dao=new DAOClasse();
-            $grupoatividade=$dao->localizarPorId($idclasse);
-            $descricao=$grupoatividade->getDescricao();
+            $classe=$dao->localizarPorId($idclasse);
+            $descricao=$classe->getDescricao();
         }
         header("Content-type: text/xml");
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
@@ -32,10 +32,10 @@ require '../utils/gerarXML.php';
         echo("</items>");
     }else if(isset($_POST['descricao'])){
         $dao=new DAOClasse();
-        $grupoatividade=new Classe();
-        $grupoatividade->setId($_POST['id']);
-        $grupoatividade->setDescricao($_POST['descricao']);
-        if($dao->gravar($grupoatividade)){
+        $classe=new Classe();
+        $classe->setId($_POST['id']);
+        $classe->setDescricao($_POST['descricao']);
+        if($dao->gravar($classe)){
             echo 'OK';
         }else{
             echo 'Erro Salvando Classe';

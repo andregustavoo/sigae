@@ -32,10 +32,10 @@ require '../utils/gerarXML.php';
         echo("</items>");
     }else if(isset($_POST['descricao'])){
         $dao=new DAOGrupoAtividade();
-        $grupoatividade=new GrupoAtividade();
-        $grupoatividade->setId($_POST['id']);
-        $grupoatividade->setDescricao($_POST['descricao']);
-        if($dao->gravar($grupoatividade)){
+        $classe=new GrupoAtividade();
+        $classe->setId($_POST['id']);
+        $classe->setDescricao($_POST['descricao']);
+        if($dao->gravar($classe)){
             echo 'OK';
         }else{
             echo 'Erro Salvando Classe';
