@@ -10,35 +10,39 @@ require '../utils/gerarXML.php';
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"); 
         //Recupera dados da consulta
         $dao=new DAOFuncao();
-        $registros=$dao->listarClasses();
+        $registros=$dao->listarFuncoes();
         echo gerarXMLGrid($registros);
     }else if(isset($_GET['form'])){
         $idfuncao=0;
         $descricao="";
-        if (isset($_GET['idclasse'])){
-            $idfuncao=$_GET['idclasse'];
+        $setor="";
+        if (isset($_GET['idfuncao'])){
+            $idfuncao=$_GET['idfuncao'];
             $dao=new DAOFuncao();
             $funcao=$dao->localizarPorId($idfuncao);
             $descricao=$funcao->getDescricao();
+            $setor=$funcao->getSetor();
         }
         header("Content-type: text/xml");
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
         echo("<items>");
-        echo('<item type="fieldset" name="data" label="Classe" inputWidth="auto">');
+        echo('<item type="fieldset" name="data" label="Função" inputWidth="auto">');
         echo('<item type="hidden" name="id" value="'. $idfuncao . '"/>');
         echo('<item type="input" name="descricao" label="Descrição" value="'. $descricao .'" position="label-top"/>');
-        echo('<item type="button" name="salvarclasse" value="Salvar"/>');
+         echo('<item type="input" name="setor" label="Setor" value="'. $setor .'" position="label-top"/>');
+        echo('<item type="button" name="salvarfuncao" value="Salvar"/>');
         echo('</item>');
         echo("</items>");
     }else if(isset($_POST['descricao'])){
         $dao=new DAOFuncao();
-        $funcao=new Classe();
+        $funcao=new Funcao();
         $funcao->setId($_POST['id']);
         $funcao->setDescricao($_POST['descricao']);
+        $funcao->setSetor($_POST['setor']);
         if($dao->gravar($funcao)){
             echo 'OK';
         }else{
-            echo 'Erro Salvando Classe';
+            echo 'Erro Salvando Função';
         }
     }else if(isset($_POST['excluir'])){
         $id=$_POST['id'];
@@ -46,7 +50,7 @@ require '../utils/gerarXML.php';
         if ($dao->excluir($id)){
             echo 'OK';
         }else{
-            echo 'Erro Excluindo Classe';
+            echo 'Erro Excluindo Função';
         }
     }
 

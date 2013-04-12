@@ -3,7 +3,8 @@
 class DAOFuncao {
   public function gravar(Funcao $funcao){
       $sql='';
-      if (!isset($funcao->getId()) || $funcao->getId()==0){
+      $id=$funcao->getId();
+      if (!isset($id) || $funcao->getId()==0){
           $sql="insert into funcao(descricaofuncao,setor)
                 values(
               '".$funcao->getDescricao()."',

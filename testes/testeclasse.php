@@ -23,21 +23,21 @@
     ?>
     <body>
         <?php
-            $daoClasse=new DAOClasse();
+            $daoClasse=new DAOFuncao();
            
         
-                $classe=new Classe();
-                $classe->setDescricao('blá,blá blá!');
+                $funcao=new Classe();
+                $funcao->setDescricao('blá,blá blá!');
                 //Precisamos recuperar o id da classe;
                
                 
-                if ($daoClasse->gravar($classe)){
+                if ($daoClasse->gravar($funcao)){
                     echo 'Cadastro Salvo com sucesso';
                 }else{
                     echo 'Erro Salvando classe';
                 }
-                 $classe=$daoClasse->localizarPorId(3);
-                 echo $classe->getDescricao();
+                 $funcao=$daoClasse->localizarPorId(3);
+                 echo $funcao->getDescricao();
            
         ?>
     </body>

@@ -27,13 +27,13 @@ and open the template in the editor.
     ?>
     <body>
         <?php
-            $daoClasse=new DAOClasse();
-            $classe=$daoClasse->localizarPorId(3);
-            if ($classe){
+            $daoClasse=new DAOFuncao();
+            $funcao=$daoClasse->localizarPorId(3);
+            if ($funcao){
                 $individuo=new Individuo();
                 $individuo->setNome('Gustavo Gomes');
                 //Precisamos recuperar o id da classe;
-                $individuo->setClasse($classe);
+                $individuo->setClasse($funcao);
                 $individuo->setCpf('123567');
                 $individuo->setEmail('andre@mail.com');
                 $individuo->setDataNascimento(('1987-08-02'));

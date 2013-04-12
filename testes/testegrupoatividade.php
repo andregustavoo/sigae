@@ -26,10 +26,10 @@ and open the template in the editor.
     
     <body>
         <?php
-            $classe = new GrupoAtividade();
-            $classe->setDescricao('Testando');
+            $funcao = new GrupoAtividade();
+            $funcao->setDescricao('Testando');
             $daogrupoatividade = new DAOGrupoAtividade();
-            if($daogrupoatividade->gravar($classe)){
+            if($daogrupoatividade->gravar($funcao)){
                 echo 'Cadastro Gravado com Sucesso';
                 }
                 else{
