@@ -7,7 +7,9 @@
         <script type="text/javascript" src="types/ftypes.js"></script>
         <script type="text/javascript" src="scripts/gui.js"></script>
         <script type="text/javascript" src="scripts/guiclasse.js"></script>
+        <script type="text/javascript" src="scripts/guifuncao.js"></script>
         <script type="text/javascript" src="scripts/guigrupoatividade.js"></script>
+        <script type="text/javascript" src="scripts/guiindividuo.js"></script>
         <link rel="STYLESHEET" type="text/css" href="dhtmlx.css"/>
         <link rel="STYLESHEET" type="text/css" href="types/ftypes.css"/>
         <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
@@ -31,8 +33,13 @@
                         layout.cells("a").setText("SIGAE - Classe");
                     }else if(id=="grupoatividade"){
                         montarGUIGrupoAtividade(layout);
+                         layout.cells("a").setText("SIGAE - Grupo de Atividade");
                     }else if(id=="funcao"){
-                        
+                        montarGUIFuncao(layout);
+                         layout.cells("a").setText("SIGAE - Função");
+                    }else if(id=="cadastroindividuo"){
+                        montarGUIIndividuo(layout);
+                         layout.cells("a").setText("SIGAE - Pessoa");
                     } 
                  });   
                  maintoolbar=layout.attachToolbar();

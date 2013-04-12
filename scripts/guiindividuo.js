@@ -10,12 +10,12 @@
     if (id=="salvarindividuo"){
         form.send("controller/controllerindividuo.php","post",function(loader,response){
             if (response=="OK"){
-                alert("Indíviduo Salvo com Sucesso");
+                alert("Pessoa Salva com Sucesso");
                 janela.close();
                 grid.clearAll();
                 grid.load("controller/controllerindividuo.php?consultar=1");
             }else{
-                alert("Erro salvando Indíviduo");
+                alert("Erro salvando Pessoa");
             }
         });
     }
@@ -32,7 +32,7 @@ grid=montarGrid(layout,"controller/controllerindividuo.php?consultar=1",
 toolbar=montarToolbar(xmlToolbar,layout);
 toolbar.attachEvent("onClick",function(id){
     if (id=="novoindividuo"){
-        janela=montarJanela(layout,"Cadastro de Individuos");
+        janela=montarJanela(layout,"Cadastro de Pessoas");
         
         form=montarForm(janela,"controller/controllerindividuo.php?form=1");
         form.attachEvent("onButtonClick",salvarIndividuo);
@@ -42,25 +42,25 @@ toolbar.attachEvent("onClick",function(id){
         if (idindividuo!=null){
             dhtmlxAjax.post("controller/controllerindividuo.php","excluir=1&id="+idindividuo,function(loader){
             if (loader.xmlDoc.responseText=="OK"){
-                alert("Individuo Excluido com Sucesso");
+                alert("Pessoa Excluida com Sucesso");
                 grid.clearAll();
                 grid.load("controller/controllerindividuo.php?consultar=1");
 
             }else{
-                alert("Erro excluindo individuo");
+                alert("Erro excluindo pessoa");
             }
             });
         }else{
-            alert('Selecione um individuo para excluir!');
+            alert('Selecione uma pessoa para excluir!');
         }
     }else if(id=="editarindividuo"){
         var idindividuo=grid.getSelectedId();
         if (idindividuo!=null){
-            janela=montarJanela(layout,"Cadastro de Individuo");
+            janela=montarJanela(layout,"Cadastro de Pessoas");
             form=montarForm(janela,"controller/controllerindividuo.php?form=1&idindividuo="+idindividuo);
             form.attachEvent("onButtonClick",salvarIndividuo);
         }else{
-            alert('Selecione um Individuo para editar');
+            alert('Selecione uma Pessoa para editar');
         }
     }
 });

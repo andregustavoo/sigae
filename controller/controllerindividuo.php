@@ -34,7 +34,7 @@ require '../utils/gerarXML.php';
         header("Content-type: text/xml");
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
         echo("<items>");
-        echo('<item type="fieldset" name="data" label="Indíviduo" inputWidth="auto">');
+        echo('<item type="fieldset" name="data" label="Pessoa" inputWidth="auto">');
         echo('<item type="hidden" name="id" value="'. $idindividuo . '"/>');
         echo('<item type="input" name="nome" label="Nome" inputWidth="200" value="'. $nome .'" position="label-top"/>');
         echo('<item type="input" name="email" label="E-Mail" inputWidht="150" value="'. $email .'" position="label-top"/>');
