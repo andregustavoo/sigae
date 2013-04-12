@@ -48,17 +48,19 @@ class DAOIndividuo {
        return $resultado;
    }
 public function localizarPorId($idindividuo){
-    $sql="select * from individuo where idindividuo=$idindividuo";
+    $sql="select idindividuo,nome,cpf,telefone,email,idclasse,
+        date_format(datanascimento,'%d-%m-%Y') as data_nascimento from individuo where idindividuo=$idindividuo";
     $conexao=DAO::getConexao();
     $tabela=$conexao->query($sql);
     $registro=$tabela->fetch(PDO::FETCH_ASSOC);
       if ($registro){
           $individuo=new Individuo();
-          $individuo->setId($registro['id']);
+          $individuo->setId($registro['idindividuo']);
           $individuo->setNome($registro['nome']);
           $individuo->setCpf($registro['cpf']);
           $individuo->setTelefone($registro['telefone']);
           $individuo->setEmail($registro['email']);
+          $individuo->setDataNascimento($registro['data_nascimento']);
           //Localizando as informações da classe
           $daoClasse=new DAOClasse();
           $individuo->setClasse($daoClasse->localizarPorId($registro['idclasse']));
@@ -67,6 +69,15 @@ public function localizarPorId($idindividuo){
           return null;
       }
         
+}
+public function listarIndividuos(){
+    $sql='select idindividuo,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,email,cpf,descricaoclasse
+from individuo inner join classe on individuo.idclasse=classe.idclasse
+order by nome';
+    $conexao=DAO::getConexao();
+    $tabela=$conexao->query($sql);
+    $registros=$tabela->fetchAll();
+    return $registros;
 }
 }
     
