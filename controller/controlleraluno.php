@@ -1,35 +1,41 @@
 <?php
     
-include '../utils/carregaclassses.php';
+include '../utils/carregaaluno.php';
 require '../utils/gerarXML.php';       
-    ?>
+
+
+?>
+
 <?php
 
-    if (isset($_GET['consultar'])){
+if (isset($_GET['consultar'])){
         header("Content-type: text/xml");
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"); 
         //Recupera dados da consulta
-        $dao=new DAOIndividuo();
-        $registros=$dao->listarIndividuos();
+        $dao=new DAOAluno();
+        $registros=$dao->listarAluno();
         echo gerarXMLGrid($registros);
     }else if(isset($_GET['form'])){
-        $idindividuo=0;
+        $aluno=0;
         $nome="";
+        $matricula="";
+        $turma="";
         $telefone="";
         $email="";
         $cpf="";
         $datanascimento="";
-        $idclasse=0;
-        if (isset($_GET['idindividuo'])){
-            $idindividuo=$_GET['idindividuo'];
+    
+        if (isset($_GET['aluno'])){
+            $aluno=$_GET['aluno'];
             $dao=new DAOAluno();
-            $individuo=$dao->localizarPorId($idindividuo);
+            $aluno=$dao->localizarPorId($aluno);
             $nome=$individuo->getNome();
             $cpf=$individuo->getCpf();
             $telefone=$individuo->getTelefone();
             $email=$individuo->getEmail();
             $datanascimento=$individuo->getDataNascimento();
-            $idclasse=$individuo->getClasse()->getId();
+            $turma=$aluno->getTurma();
+            $matricula=$aluno->getMatricula();
         }
         header("Content-type: text/xml");
         echo("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
@@ -90,4 +96,4 @@ require '../utils/gerarXML.php';
             echo 'Erro Excluindo Individuo';
         }
     }
-
+?>
