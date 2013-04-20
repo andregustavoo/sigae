@@ -41,6 +41,9 @@
                     }else if(id=="cadastroindividuo"){
                         montarGUIIndividuo(layout);
                          layout.cells("a").setText("SIGAE - Pessoa");
+                    }else if(id=="cadastroaluno"){
+                        montarGUIAluno(layout);
+                        layout.cells("a").setText("SIGAE - Aluno");
                     } 
                  });   
                  maintoolbar=layout.attachToolbar();

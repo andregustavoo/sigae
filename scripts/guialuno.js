@@ -8,7 +8,7 @@ var salvarAluno=function(id){
                 alert("Alun@ Salvo com Sucesso");
                 janela.close();
                 grid.clearAll();
-                grid.load("controller/controllerindividuo.php?consultar=1");
+                grid.load("controller/controlleraluno.php?consultar=1");
             }else{
                 alert("Erro salvando Alun@");
             }
@@ -16,44 +16,44 @@ var salvarAluno=function(id){
     }
 }
 
-function montarGUIIndividuo(layout){
-grid=montarGrid(layout,"controller/controllerindividuo.php?consultar=1",
+function montarGUIAluno(layout){
+grid=montarGrid(layout,"controller/controlleraluno.php?consultar=1",
 
- "ID,Nome,Data de Nascimento,Telefone,E-mail,CPF,Classe","5,30,10,10,15,10,20","ro,ro,ro,ro,ro,ro,ro");
-             var xmlToolbar='<toolbar><item id="novoindividuo" type="button" text="Novo" img="new.gif" imgdis="new_dis.gif"/>\n\
- <item id="excluirindividuo" type="button" text="Excluir" img="delete.gif" imgdis="delete_dis.gif"/> \n\
-<item id="editarindividuo" type="button" text="Editar" img="edit.gif" imgdis="edit_dis.gif"/></toolbar>';
+ "ID,Nome,Matrícula,Turma,Telefone,E-mail,CPF,Data de Nascimento","5,30,15,5,10,15,10,10","ro,ro,ro,ro,ro,ro,ro,ro");
+             var xmlToolbar='<toolbar><item id="novoaluno" type="button" text="Novo" img="new.gif" imgdis="new_dis.gif"/>\n\
+ <item id="excluiraluno" type="button" text="Excluir" img="delete.gif" imgdis="delete_dis.gif"/> \n\
+<item id="editaraluno" type="button" text="Editar" img="edit.gif" imgdis="edit_dis.gif"/></toolbar>';
 
 toolbar=montarToolbar(xmlToolbar,layout);
 toolbar.attachEvent("onClick",function(id){
     if (id=="novoaluno"){
-        janela=montarJanela(layout,"Cadastro de alunos");
+        janela=montarJanela(layout,"Cadastro de Alunos");
         
-        form=montarForm(janela,"controller/controllerindividuo.php?form=1");
-        form.attachEvent("onButtonClick",salvarIndividuo);
+        form=montarForm(janela,"controller/controlleraluno.php?form=1");
+        form.attachEvent("onButtonClick",salvarAluno);
         layout.dhxWins._engineRedrawWindowSize(janela);
     }else if(id=="excluiraluno"){
-        var idindividuo=grid.getSelectedId();
-        if (idindividuo!=null){
-            dhtmlxAjax.post("controller/controllerindividuo.php","excluir=1&id="+idindividuo,function(loader){
+        var idAluno=grid.getSelectedId();
+        if (idAluno!=null){
+            dhtmlxAjax.post("controller/controlleraluno.php","excluir=1&id="+idAluno,function(loader){
             if (loader.xmlDoc.responseText=="OK"){
                 alert("Pessoa Excluida com Sucesso");
                 grid.clearAll();
-                grid.load("controller/controllerindividuo.php?consultar=1");
+                grid.load("controller/controllerialuno.php?consultar=1");
 
             }else{
-                alert("Erro excluindo pessoa");
+                alert("Erro excluindo Alun@");
             }
             });
         }else{
             alert('Selecione uma alun@ para excluir!');
         }
-    }else if(id=="editarindividuo"){
-        var idindividuo=grid.getSelectedId();
-        if (idindividuo!=null){
+    }else if(id=="editaraluno"){
+        var idAluno=grid.getSelectedId();
+        if (idAluno!=null){
             janela=montarJanela(layout,"Cadastro de Aluno");
-            form=montarForm(janela,"controller/controllerindividuo.php?form=1&idindividuo="+idindividuo);
-            form.attachEvent("onButtonClick",salvarIndividuo);
+            form=montarForm(janela,"controller/controlleraluno.php?form=1&idAluno="+idAluno);
+            form.attachEvent("onButtonClick",salvaraluno);
         }else{
             alert('Selecione uma alun@ para editar');
         }

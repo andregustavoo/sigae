@@ -22,7 +22,7 @@ require '../utils/gerarXML.php';
         $idclasse=0;
         if (isset($_GET['idindividuo'])){
             $idindividuo=$_GET['idindividuo'];
-            $dao=new DAOAluno();
+            $dao=new DAOIndviduo();
             $individuo=$dao->localizarPorId($idindividuo);
             $nome=$individuo->getNome();
             $cpf=$individuo->getCpf();

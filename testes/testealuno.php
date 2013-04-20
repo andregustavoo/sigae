@@ -11,20 +11,20 @@ and open the template in the editor.
     <?php
     //Utilitário para incluir automaticamente os arquivos
     if (!defined("BASE_PATH")) define('BASE_PATH', dirname (dirname (__FILE__))); 
-        function carregaClasse($class) {
-            $classe=  BASE_PATH .'/model/' . $class . '.php';
+        function carregaAluno($aluno) {
+            $aluno=  BASE_PATH .'/model/' . $class . '.php';
             //echo $_SERVER['DOCUMENT_ROOT'];
             
-            if (file_exists($classe)){
-                require $classe;
+            if (file_exists($aluno)){
+                require $aluno;
             }else{
-               $classe=BASE_PATH.'/dao/' . $class . '.php';
-               if (file_exists($classe)){
-                   require $classe;
+               $aluno=BASE_PATH.'/dao/' . $class . '.php';
+               if (file_exists($aluno)){
+                   require $aluno;
                }
             } 
        }
-       spl_autoload_register('carregaClasse');
+       spl_autoload_register('carregaAluno');
 
            
     ?>
