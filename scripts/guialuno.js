@@ -5,12 +5,12 @@ var salvarAluno=function(id){
     if (id=="salvaraluno"){
         form.send("controller/controlleraluno.php","post",function(loader,response){
             if (response=="OK"){
-                alert("Pessoa Salva com Sucesso");
+                alert("Alun@ Salvo com Sucesso");
                 janela.close();
                 grid.clearAll();
                 grid.load("controller/controllerindividuo.php?consultar=1");
             }else{
-                alert("Erro salvando Pessoa");
+                alert("Erro salvando Alun@");
             }
         });
     }
@@ -26,13 +26,13 @@ grid=montarGrid(layout,"controller/controllerindividuo.php?consultar=1",
 
 toolbar=montarToolbar(xmlToolbar,layout);
 toolbar.attachEvent("onClick",function(id){
-    if (id=="novoindividuo"){
-        janela=montarJanela(layout,"Cadastro de Pessoas");
+    if (id=="novoaluno"){
+        janela=montarJanela(layout,"Cadastro de alunos");
         
         form=montarForm(janela,"controller/controllerindividuo.php?form=1");
         form.attachEvent("onButtonClick",salvarIndividuo);
         layout.dhxWins._engineRedrawWindowSize(janela);
-    }else if(id=="excluirindividuo"){
+    }else if(id=="excluiraluno"){
         var idindividuo=grid.getSelectedId();
         if (idindividuo!=null){
             dhtmlxAjax.post("controller/controllerindividuo.php","excluir=1&id="+idindividuo,function(loader){
@@ -46,16 +46,16 @@ toolbar.attachEvent("onClick",function(id){
             }
             });
         }else{
-            alert('Selecione uma pessoa para excluir!');
+            alert('Selecione uma alun@ para excluir!');
         }
     }else if(id=="editarindividuo"){
         var idindividuo=grid.getSelectedId();
         if (idindividuo!=null){
-            janela=montarJanela(layout,"Cadastro de Pessoas");
+            janela=montarJanela(layout,"Cadastro de Aluno");
             form=montarForm(janela,"controller/controllerindividuo.php?form=1&idindividuo="+idindividuo);
             form.attachEvent("onButtonClick",salvarIndividuo);
         }else{
-            alert('Selecione uma Pessoa para editar');
+            alert('Selecione uma alun@ para editar');
         }
     }
 });

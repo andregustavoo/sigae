@@ -1,8 +1,10 @@
+
 <?php
- //Utilitário para incluir automaticamente os arquivos
+
+    //Utilitário para incluir automaticamente os arquivos
     if (!defined("BASE_PATH")) define('BASE_PATH', dirname (dirname (__FILE__))); 
-        function carregaAluno($aluno) {
-            $=  BASE_PATH .'/model/' . $ . '.php';
+        function carregaClasse($aluno) {
+            $aluno=  BASE_PATH .'/model/' . $class . '.php';
             //echo $_SERVER['DOCUMENT_ROOT'];
             
             if (file_exists($aluno)){
@@ -15,5 +17,7 @@
             } 
        }
        spl_autoload_register('carregaAluno');
+
+           
 
 ?>
