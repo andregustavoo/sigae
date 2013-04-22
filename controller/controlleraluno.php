@@ -44,7 +44,7 @@ if (isset($_GET['consultar'])){
         echo('<item type="hidden" name="id" value="'. $idindividuo . '"/>');
         echo('<item type="input" name="nome" label="Nome" inputWidth="200" value="'. $nome .'" position="label-top"/>');
         echo('<item type="input" nome="matricula" label="Matricula" inputWidth="100" value="'.$matricula.'" position="label-top"/>');
-        echo('<item type="input nome="turma" label="Turma" inputWidth="150" value="'.$turma.'" position="label-top"/>');
+        echo('<item type="input" nome="turma" label="Turma" inputWidth="150" value="'.$turma.'" position="label-top"/>');
         echo('<item type="input" name="email" label="E-Mail" inputWidht="150" value="'. $email .'" position="label-top"/>');
         echo('<item type="input" name="cpf" label="CPF" value="'. $cpf .'" position="label-top"/>');
         echo('<item type="input" name="telefone" label="Telefone" value="'. $telefone .'" position="label-top"/>');
