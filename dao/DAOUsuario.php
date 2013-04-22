@@ -23,20 +23,19 @@ class DAOUsuario {
             '".$usuario->getDataNascimento()."',
             '".$usuario->getEmail()."',
             '".$usuario->getCpf()."',
-             ".$usuario->getClasse()->getId().")";
+            ".$usuario->getClasse()->getId().")";
             try{
-                  $conexao->beginTransaction();
-        
+                  $conexao->beginTransaction();        
+                  
                   $res=$conexao->exec($sql01);
                   if ($res){
                       $idindividuo=$conexao->lastInsertId();
-                      $idfuncao=$conexao->lastInsertId();
                       $sql02="insert into usuario(login,senha,administrador,idindividuo,idfuncao) values(
                       '".$usuario->getLogin()."',
                       '".$usuario->getSenha()."',
                       '".$usuario->getAdministrador()."',
-                      ".$idindividuo.",
-                      ".$idfuncao.")";
+                      '".$idindividuo."',
+                      ".$usuario->getFuncao()->getId().")";
              
                       $resultado=$conexao->exec($sql02);
            
@@ -57,21 +56,21 @@ class DAOUsuario {
             }
           
         }else{
-             $sql01="update individuo set
+            $sql01="update individuo set
             nome='".$usuario->getNome()."',
             telefone='".$usuario->getTelefone()."',
             datanascimento='".$usuario->getDataNascimento()."',
             email='".$usuario->getEmail()."',
             cpf='".$usuario->getCpf()."',
-             idclasse=".$usuario->getClasse()->getId()."
-             where idindividuo=".$usuario->getId();
+            idclasse=".$usuario->getClasse()->getId()."
+            where idindividuo=".$usuario->getId();
             try{
                 $conexao->beginTransaction();
                 $res=$conexao->exec($sql01);
                 $sql02="update usuario set login='".$usuario->getLogin()."',
                 senha='".$usuario->getSenha()."',
                 administrador='".$usuario->getAdministrador()."', 
-                idfuncao='". $usuario->getFuncao()->getId()."',                    
+                idfuncao=". $usuario->getFuncao()->getId()."                    
                 where idindividuo=".$usuario->getId();
                 $resultado=$conexao->exec($sql02);
                 $conexao->commit();
@@ -120,19 +119,30 @@ class DAOUsuario {
             $usuario->setDataNascimento($registro['datanascimento']);
             $usuario->setTelefone($registro['telefone']);
             $usuario->setEmail($registro['email']);
-            $usuario->setCpf($registro['cpf']);         
+            $usuario->setCpf($registro['cpf']);
+            //Recupera os dados da classe 
+            $daoClasse=new DAOClasse();
+            $usuario->setClasse($daoClasse->localizarPorId($registro['idclasse']));
             $usuario->setLogin($registro['login']);
             $usuario->setSenha($registro['senha']);
             $usuario->setAdministrador($registro['administrador']);
-            //Recupera os dados da classe e da funcao
-            $daoClasse=new DAOClasse();
+            //Recupera os dados da funcao
             $daoFuncao=new DAOFuncao();
-            $usuario->setClasse($daoClasse->localizarPorId($registro['idclasse']));
             $usuario->setFuncao($daoFuncao->localizarPorId($registro['idfuncao']));
             return $usuario;
         }
         return null;
     }
+    
+    public function listarUsuarios(){
+    $sql='select usuario.idindividuo as idusuario,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,
+        email,cpf,idclasse,login,senha,administrador,idfuncao from individuo inner join usuario on 
+        individuo.idindividuo=usuario.idindividuo order by nome';
+    $conexao=DAO::getConexao();
+    $tabela=$conexao->query($sql);
+    $registros=$tabela->fetchAll();
+    return $registros;
+}
 }
 
 ?>
