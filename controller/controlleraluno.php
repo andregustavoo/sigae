@@ -16,7 +16,7 @@ if (isset($_GET['consultar'])){
         $registros=$dao->listarAlunos();
         echo gerarXMLGrid($registros);
     }else if(isset($_GET['form'])){// usado para coletar valores em um formulário com method = "get".
-        $idindividuo=0; // Por que o aluno começa em Zero?
+        $idindividuo=0; 
         $nome=""; // Criando a variável $nome e está deixando-a vazia.
         $matricula=""; // Criando a variável $matricula e está deixando-a vazia.
         $turma=""; // Criando a variável $turma e está deixando-a vazia.
@@ -43,8 +43,8 @@ if (isset($_GET['consultar'])){
         echo('<item type="fieldset" name="data" label="Aluno" inputWidth="auto">');
         echo('<item type="hidden" name="id" value="'. $idindividuo . '"/>');
         echo('<item type="input" name="nome" label="Nome" inputWidth="200" value="'. $nome .'" position="label-top"/>');
-        echo('<item type="input" nome="matricula" label="Matricula" inputWidth="100" value="'.$matricula.'" position="label-top"/>');
-        echo('<item type="input" nome="turma" label="Turma" inputWidth="150" value="'.$turma.'" position="label-top"/>');
+        echo('<item type="input" name="matricula" label="Matricula" inputWidth="100" value="'.$matricula.'" position="label-top"/>');
+        echo('<item type="input" name="turma" label="Turma" inputWidth="150" value="'.$turma.'" position="label-top"/>');
         echo('<item type="input" name="email" label="E-Mail" inputWidht="150" value="'. $email .'" position="label-top"/>');
         echo('<item type="input" name="cpf" label="CPF" value="'. $cpf .'" position="label-top"/>');
         echo('<item type="input" name="telefone" label="Telefone" value="'. $telefone .'" position="label-top"/>');
@@ -84,7 +84,7 @@ if (isset($_GET['consultar'])){
         $aluno->setEmail($_POST['email']);
         $aluno->setTelefone($_POST['telefone']);
         //Convertendo a data
-        $datetime=  strtotime($_POST['datanascimento']);
+        $datetime= strtotime($_POST['datanascimento']);
         $datasql=date("Y-m-d",$datetime);
         $aluno->setDataNascimento($datasql);
         $aluno->setMatricula($_POST['matricula']);

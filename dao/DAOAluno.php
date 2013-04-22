@@ -24,18 +24,18 @@ class DAOAluno {
      * concluida ou tudo deve ser desfeito
      */
     public function gravar(Aluno $aluno){
-        $idaluno=$aluno->getId();
-        $sql01="";//SQL para cadastrar/atualiza um individuo
+        $id=$aluno->getId();
+        $sql01="";//SQL para cadastrar/atualizar um individuo
         $sql02="";//SQL para cadastrar/atualizar um aluno
         $conexao=DAO::getConexao();
-        if (!isset($idaluno) || $aluno->getId()==0){
-            $sql01="insert into individuo(nome, telefone,datanascimento,email,cpf,idclasse) values(
-            '" . $aluno->getNome() . "',
-            '".$aluno->getTelefone() . "',
+        if (!isset($id) || $aluno->getId()==0){
+            $sql01="insert into individuo(nome,telefone,datanascimento,email,cpf,idclasse) values(
+            '". $aluno->getNome() . "',
+            '". $aluno->getTelefone() . "',
             '". $aluno->getDataNascimento() . "',
             '". $aluno->getEmail() . "',
-            '".$aluno->getCpf() . "',
-             " . $aluno->getClasse()->getId().")";
+            '". $aluno->getCpf() . "',
+            1)";
             try{
                   $conexao->beginTransaction();
         
@@ -71,8 +71,8 @@ class DAOAluno {
             telefone='".$aluno->getTelefone() . "',
             datanascimento='". $aluno->getDataNascimento() . "',
             email='". $aluno->getEmail() . "',
-            cpf='".$aluno->getCpf() . "',
-             idclasse=" . $aluno->getClasse()->getId()."
+            cpf='".$aluno->getCpf() . "'
+           
              where idindividuo=".$aluno->getId();
             try{
                 $conexao->beginTransaction();
@@ -123,10 +123,10 @@ class DAOAluno {
      * as informações do aluno. Nesse momento optaremos por utilizar a primeira opção
      */
     public function localizarPorId($idindividuo){
-        $sql="select aluno.idindividuo as idaluno,nome,datanascimento,telefone,email,cpf,idclasse,matricula,turma from
+        $sql01="select aluno.idindividuo as idaluno,nome,datanascimento,telefone,email,cpf,idclasse,matricula,turma from
 individuo inner join aluno on individuo.idindividuo=aluno.idindividuo where aluno.idindividuo=$idindividuo";
         $conexao=DAO::getConexao();
-        $tabela=$conexao->query($sql);
+        $tabela=$conexao->query($sql01);
         $registro=$tabela->fetch(PDO::FETCH_ASSOC);
         if ($registro){
             $aluno=new Aluno();
@@ -146,11 +146,11 @@ individuo inner join aluno on individuo.idindividuo=aluno.idindividuo where alun
         return null;
     }
 public function listarAluno(){
-    $sql='select aluno matricula,turma,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,email,cpf
+    $sql02='select matricula,turma,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,email,cpf
 from aluno inner join individuo on aluno.idindividuo=individuo.idindividuo
 order by nome';
     $conexao=DAO::getConexao();
-    $tabela=$conexao->query($sql);
+    $tabela=$conexao->query($sql02);
     $registros=$tabela->fetchAll();
     return $registros;
 }

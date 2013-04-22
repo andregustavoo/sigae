@@ -4,7 +4,7 @@
 var salvarAluno=function(id){
     if (id=="salvaraluno"){
         form.send("controller/controlleraluno.php","post",function(loader,response){
-            if (response=="OK"){
+            if (loader.xmlDoc.statusText=="OK"){
                 alert("Alun@ Salvo com Sucesso");
                 janela.close();
                 grid.clearAll();
@@ -37,7 +37,7 @@ toolbar.attachEvent("onClick",function(id){
         if (idAluno!=null){
             dhtmlxAjax.post("controller/controlleraluno.php","excluir=1&id="+idAluno,function(loader){
             if (loader.xmlDoc.responseText=="OK"){
-                alert("Pessoa Excluida com Sucesso");
+                alert("Alun@ Excluida com Sucesso");
                 grid.clearAll();
                 grid.load("controller/controllerialuno.php?consultar=1");
 
