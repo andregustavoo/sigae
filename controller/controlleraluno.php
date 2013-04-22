@@ -98,6 +98,7 @@ if (isset($_GET['consultar'])){
     }else if(isset($_POST['excluir'])){
         $id=$_POST['id'];
         $dao=new DAOAluno();
+        listarAlunos();
         if ($dao->excluir($id)){
             echo 'OK';
         }else{

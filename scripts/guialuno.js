@@ -36,9 +36,10 @@ toolbar.attachEvent("onClick",function(id){
         var idAluno=grid.getSelectedId();
         if (idAluno!=null){
             dhtmlxAjax.post("controller/controlleraluno.php","excluir=1&id="+idAluno,function(loader){
-            if (loader.xmlDoc.responseText=="OK"){
+            if (loader.xmlDoc.statusText=="OK"){
                 alert("Alun@ Excluida com Sucesso");
                 grid.clearAll();
+                  
                 grid.load("controller/controllerialuno.php?consultar=1");
 
             }else{

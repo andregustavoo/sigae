@@ -139,18 +139,18 @@ individuo inner join aluno on individuo.idindividuo=aluno.idindividuo where alun
             $aluno->setEmail($registro['email']);
             $aluno->setTurma($registro['turma']);
             //Recupera os dados da classe
-            $daoClasse=new DAOClasse();
-            $aluno->setClasse($daoClasse->localizarPorId($registro['idclasse']));
+           // $daoClasse=new DAOClasse();
+           // $aluno->setClasse($daoClasse->localizarPorId($registro['idclasse']));
             return $aluno;
         }
         return null;
     }
 public function listarAlunos(){
-    $sql='select individuo.idindividuo,nome,matricula,turma,telefone,email,cpf,date_format(datanascimento,"%d-%m-%Y") as data_nascimento
-from aluno inner join individuo on aluno.idindividuo=aluno.idindividuo
+    $sql02='select individuo.idindividuo,nome,matricula,turma,telefone,email,cpf,date_format(datanascimento,"%d-%m-%Y") as data_nascimento
+from aluno  inner join individuo on aluno.idindividuo=aluno.idindividuo
 order by nome';
     $conexao=DAO::getConexao();
-    $tabela=$conexao->query($sql);
+    $tabela=$conexao->query($sql02);
     $registros=$tabela->fetchAll();
     return $registros;
 }
