@@ -145,6 +145,15 @@ individuo inner join aluno on individuo.idindividuo=aluno.idindividuo where alun
         }
         return null;
     }
+public function listarAluno(){
+    $sql='select aluno matricula,turma,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,email,cpf
+from aluno inner join individuo on aluno.idindividuo=individuo.idindividuo
+order by nome';
+    $conexao=DAO::getConexao();
+    $tabela=$conexao->query($sql);
+    $registros=$tabela->fetchAll();
+    return $registros;
+}
 }
 
 ?>
