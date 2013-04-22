@@ -49,7 +49,7 @@ class DAOGrupoAtividade {
         $registro = $tabela->fetch(PDO::FETCH_ASSOC);
         if ($registro){
             $grupoatividade = new GrupoAtividade();
-            $grupoatividade->getId($registro['idgrupoatividade']);
+            $grupoatividade->setId($registro['idgrupoatividade']);
             $grupoatividade->setDescricao($registro['descricaogrupoatividade']);
             return $grupoatividade;
         }

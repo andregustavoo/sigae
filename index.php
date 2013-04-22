@@ -10,7 +10,8 @@
         <script type="text/javascript" src="scripts/guifuncao.js"></script>
         <script type="text/javascript" src="scripts/guigrupoatividade.js"></script>
         <script type="text/javascript" src="scripts/guiindividuo.js"></script>
-         <script type="text/javascript" src="scripts/guialuno.js"></script>
+        <script type="text/javascript" src="scripts/guialuno.js"></script>
+        <script type="text/javascript" src="scripts/guiusuario.js"></script>
         <link rel="STYLESHEET" type="text/css" href="dhtmlx.css"/>
         <link rel="STYLESHEET" type="text/css" href="types/ftypes.css"/>
         <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
@@ -44,7 +45,10 @@
                     }else if(id=="cadastroaluno"){
                         montarGUIAluno(layout);
                         layout.cells("a").setText("SIGAE - Aluno");
-                    } 
+                    }else if(id=="novousuario"){
+                        montarGUIUsuario(layout);
+                        layout.cells("a").setText("SIGAE - Usuário");
+                    }
                  });   
                  maintoolbar=layout.attachToolbar();
                  maintoolbar.setIconPath("imgs/");
