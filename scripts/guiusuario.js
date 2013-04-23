@@ -16,7 +16,7 @@ var salvarUsuario=function(id){
 function montarGUIUsuario(layout){
 grid=montarGrid(layout,"controller/controllerusuario.php?consultar=1",
 
- "ID,Nome,Data de Nascimento,Telefone,E-mail,CPF,Classe,Login,Senha,Administrador,Função","5,15,10,10,10,10,10,10,5,10,5","ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+ "ID,Nome,Data de Nascimento,Telefone,E-mail,CPF,Classe,Login,Administrador,Função","5,15,10,10,10,10,10,10,10,10","ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
              var xmlToolbar='<toolbar><item id="novousuario" type="button" text="Novo" img="new.gif" imgdis="new_dis.gif"/>\n\
  <item id="excluirusuario" type="button" text="Excluir" img="delete.gif" imgdis="delete_dis.gif"/> \n\
 <item id="editarusuario" type="button" text="Editar" img="edit.gif" imgdis="edit_dis.gif"/></toolbar>';
