@@ -98,12 +98,13 @@ class DAOAluno {
      */
     public function excluir($idindividuo){
         $sql01="delete from individuo where idindividuo=".$idindividuo;
-        $sql02="delete from aluno where individuo=".$idindividuo;
+        $sql02="delete from aluno where idindividuo=".$idindividuo;
         $conexao=DAO::getConexao();
         try{
+             $conexao->beginTransaction();
             //Mudando apenas o estilo de verificar se a operação foi realizada com sucesso
-            if ($conexao->exec($sql01)){
-                if($conexao->exec($sql02)){
+            if ($conexao->exec($sql02)){
+                if($conexao->exec($sql01)){
                     $conexao->commit();
                     return true;
                 }else{
@@ -115,6 +116,7 @@ class DAOAluno {
             $conexao->rollBack();
             return false;
         }
+        return false;
         
     }
     /*
@@ -146,8 +148,8 @@ individuo inner join aluno on individuo.idindividuo=aluno.idindividuo where alun
         return null;
     }
 public function listarAlunos(){
-    $sql02='select individuo.idindividuo,nome,matricula,turma,telefone,email,cpf,date_format(datanascimento,"%d-%m-%Y") as data_nascimento
-from aluno  inner join individuo on aluno.idindividuo=aluno.idindividuo
+    $sql02='select aluno.idindividuo,nome,matricula,turma,telefone,email,cpf,date_format(datanascimento,"%d-%m-%Y") as data_nascimento
+from aluno  inner join individuo on aluno.idindividuo=individuo.idindividuo
 order by nome';
     $conexao=DAO::getConexao();
     $tabela=$conexao->query($sql02);

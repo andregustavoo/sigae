@@ -39,8 +39,7 @@ toolbar.attachEvent("onClick",function(id){
             if (loader.xmlDoc.statusText=="OK"){
                 alert("Alun@ Excluida com Sucesso");
                 grid.clearAll();
-                  
-                grid.load("controller/controllerialuno.php?consultar=1");
+                grid.load("controller/controlleraluno.php?consultar=1");
 
             }else{
                 alert("Erro excluindo Alun@");
@@ -53,8 +52,8 @@ toolbar.attachEvent("onClick",function(id){
         var idAluno=grid.getSelectedId();
         if (idAluno!=null){
             janela=montarJanela(layout,"Cadastro de Aluno");
-            form=montarForm(janela,"controller/controlleraluno.php?form=1&idAluno="+idAluno);
-            form.attachEvent("onButtonClick",salvaraluno);
+            form=montarForm(janela,"controller/controlleraluno.php?form=1&idindividuo="+idAluno);
+            form.attachEvent("onButtonClick",salvarAluno);
         }else{
             alert('Selecione uma alun@ para editar');
         }
