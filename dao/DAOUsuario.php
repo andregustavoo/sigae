@@ -86,24 +86,18 @@ class DAOUsuario {
     }
     
     public function excluir($idindividuo){
-        $sql01="delete from individuo where idindividuo=".$idindividuo;
-        $sql02="delete from usuario where individuo=".$idindividuo;
-        $conexao=DAO::getConexao();
-        try{
-            if ($conexao->exec($sql01)){
-                if($conexao->exec($sql02)){
-                    $conexao->commit();
-                    return true;
-                }else{
-                    $conexao->rollBack();
-                    return false;
-                }
-            }
-        }catch(Exception $error){
-            $conexao->rollBack();
-            return false;
-        }
-        
+       $sql01="delete from individuo where idindividuo=$idindividuo";
+       $sql02="delete from usuario where idindividuo=$idindividuo"; 
+       $conexao=DAO::getConexao();
+       
+       $resultado1=$conexao->exec($sql02);
+       $resultado2=$conexao->exec($sql01);
+       if($resultado1){
+           if($resultado2){
+               return true; 
+           }
+           return false;   
+       }
     }
     
     public function localizarPorId($idindividuo){
@@ -136,8 +130,9 @@ class DAOUsuario {
     
     public function listarUsuarios(){
     $sql='select usuario.idindividuo as idusuario,nome,date_format(datanascimento,"%d-%m-%Y") as data_nascimento,telefone,
-        email,cpf,idclasse,login,senha,administrador,idfuncao from individuo inner join usuario on 
-        individuo.idindividuo=usuario.idindividuo order by nome';
+        email,cpf,descricaoclasse,login,administrador,descricaofuncao from individuo inner join usuario on 
+        individuo.idindividuo=usuario.idindividuo inner join classe on individuo.idclasse=classe.idclasse
+        inner join funcao on usuario.idfuncao=funcao.idfuncao order by nome;';
     $conexao=DAO::getConexao();
     $tabela=$conexao->query($sql);
     $registros=$tabela->fetchAll();
